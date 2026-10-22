@@ -368,7 +368,8 @@ class Mirror:
             "-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;"
             "color:#333;max-width:640px;margin:80px auto;padding:0 20px;\">"
             "<h1 style=\"font-size:22px;\">该功能已停止服务</h1>"
-            "<p>本门户已下线，现为只读存档。登录、搜索、表单提交等功能不可用。</p>"
+            "<p>Service unavailable, please contact the system administrator "
+            "for help.</p>"
             "<p><a href=\"/\" style=\"color:#0b6bcb;\">返回首页</a></p>"
             "</body></html>",
             encoding="utf-8",
