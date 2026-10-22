@@ -1,0 +1,16 @@
+# 工具/本地文件（默认不分享）
+CLAUDE.md
+plans/
+.claude/
+.codegraph/
+.DS_Store
+
+# 抓取过程中的原始 HTML，仅用于比对，不部署
+archive/
+
+# 抓取清单与检查结果
+build/
+
+# Python
+__pycache__/
+*.pyc
