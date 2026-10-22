@@ -1,0 +1,142 @@
+.panels-flexible-7 .panels-flexible-region {
+  padding: 0;
+}
+
+.panels-flexible-7 .panels-flexible-region-inside {
+  padding-right: 0.5em;
+  padding-left: 0.5em;
+}
+
+.panels-flexible-7 .panels-flexible-region-inside-first {
+  padding-left: 0;
+}
+
+.panels-flexible-7 .panels-flexible-region-inside-last {
+  padding-right: 0;
+}
+
+.panels-flexible-7 .panels-flexible-column {
+  padding: 0;
+}
+
+.panels-flexible-7 .panels-flexible-column-inside {
+  padding-right: 0.5em;
+  padding-left: 0.5em;
+}
+
+.panels-flexible-7 .panels-flexible-column-inside-first {
+  padding-left: 0;
+}
+
+.panels-flexible-7 .panels-flexible-column-inside-last {
+  padding-right: 0;
+}
+
+.panels-flexible-7 .panels-flexible-row {
+  padding: 0 0 0.5em 0;
+  margin: 0;
+}
+
+.panels-flexible-7 .panels-flexible-row-last {
+  padding-bottom: 0;
+}
+
+.panels-flexible-column-7-main {
+  float: left;
+  width: 99.0000%;
+}
+
+.panels-flexible-7-inside {
+  padding-right: 0px;
+}
+
+.panels-flexible-7 {
+  width: auto;
+}
+
+.panels-flexible-region-7-top {
+  position: relative;
+  float: left;
+  background-color: transparent;
+  width: 864px;
+}
+
+.panels-flexible-row-7-8-inside {
+  padding-left: 864px;
+  margin-left: -864px;
+  padding-right: 0px;
+}
+
+* html .panels-flexible-row-7-8-inside {
+  left: 864px;
+}
+
+.panels-flexible-region-7-resources_for_students {
+  float: left;
+  width: 99.0000%;
+}
+
+.panels-flexible-row-7-7-inside {
+  padding-right: 0px;
+}
+
+.panels-flexible-region-7-studentsurvey {
+  float: left;
+  width: 99.0000%;
+}
+
+.panels-flexible-row-7-6-inside {
+  padding-right: 0px;
+}
+
+.panels-flexible-region-7-allstudent {
+  float: left;
+  width: 99.0000%;
+}
+
+.panels-flexible-row-7-main-row-inside {
+  padding-right: 0px;
+}
+
+.panels-flexible-region-7-activities2 {
+  float: left;
+  width: 24.7500%;
+}
+
+.panels-flexible-region-7-actiivities1 {
+  float: left;
+  width: 24.7500%;
+}
+
+.panels-flexible-region-7-activities {
+  float: left;
+  width: 24.7500%;
+}
+
+.panels-flexible-region-7-activities3 {
+  float: left;
+  width: 24.7500%;
+}
+
+.panels-flexible-row-7-3-inside {
+  padding-right: 0px;
+}
+
+.panels-flexible-region-7-separate4 {
+  float: left;
+  width: 99.0000%;
+}
+
+.panels-flexible-row-7-4-inside {
+  padding-right: 0px;
+}
+
+.panels-flexible-region-7-separate5 {
+  float: left;
+  width: 99.0000%;
+}
+
+.panels-flexible-row-7-5-inside {
+  padding-right: 0px;
+}
+
