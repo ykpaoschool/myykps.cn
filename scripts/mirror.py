@@ -24,7 +24,7 @@ from pathlib import Path
 
 HOST = "go.myykps.cn"
 BASE = f"https://{HOST}"
-UA = "Mozilla/5.0 (compatible; ykps-portal-mirror/0.1.0)"
+UA = "Mozilla/5.0 (compatible; ykps-portal-mirror/0.1.1)"
 
 ASSET_EXTS = {
     ".css", ".js", ".png", ".jpg", ".jpeg", ".gif", ".svg", ".ico", ".webp",
@@ -72,7 +72,6 @@ CSS_IMPORT_RE = re.compile(r"(@import\s+)([\"'])([^\"']+)\2", re.I)
 SCRIPT_BLOCK_RE = re.compile(r"<script\b[^>]*>.*?</script>", re.I | re.S)
 SCRIPT_ABS_RE = re.compile(
     r"(?P<q>[\"'])(?P<url>https?://go\.myykps\.cn[^\"'\\\s)]*)(?P=q)")
-BODY_OPEN_RE = re.compile(r"<body\b[^>]*>", re.I)
 FORM_OPEN_RE = re.compile(r"<form\b[^>]*>", re.I)
 INPUT_RE = re.compile(r"<(input|button|select|textarea)\b([^>]*)>", re.I)
 GENERATOR_RE = re.compile(r"<meta[^>]*name=[\"']Generator[\"'][^>]*>\s*", re.I)
@@ -80,22 +79,12 @@ RSS_LINK_RE = re.compile(
     r"<link\b[^>]*type=[\"']application/(?:rss|atom)\+xml[\"'][^>]*>\s*", re.I)
 HEAD_OPEN_RE = re.compile(r"<head\b[^>]*>", re.I)
 
-BANNER = (
-    '<div id="mirror-banner" style="background:#fff4e5;border-bottom:1px solid '
-    '#f0c36d;color:#7a4b00;font:14px/1.6 -apple-system,BlinkMacSystemFont,'
-    '\'Helvetica Neue\',Arial,sans-serif;padding:8px 14px;text-align:center;">'
-    '本门户已下线，现为只读存档；登录、搜索与提交功能已停用。'
-    '</div>'
-)
-
-
 class Mirror:
-    def __init__(self, out_dir, archive_dir=None, delay=0.2, banner=True,
+    def __init__(self, out_dir, archive_dir=None, delay=0.2,
                  disable_forms=True, noindex=False):
         self.out = Path(out_dir)
         self.archive = Path(archive_dir) if archive_dir else None
         self.delay = delay
-        self.banner = banner
         self.disable_forms = disable_forms
         self.noindex = noindex
 
@@ -180,8 +169,6 @@ class Mirror:
 
         page_url = final_url
         doc = self.rewrite_document(raw, page_url)
-        if self.banner:
-            doc = self.inject_banner(doc)
         if self.disable_forms:
             doc = self.neutralize_forms(doc)
         doc = GENERATOR_RE.sub("", doc)
@@ -328,9 +315,6 @@ class Mirror:
 
     # ---------- 清理 ----------
 
-    def inject_banner(self, text: str) -> str:
-        return BODY_OPEN_RE.sub(lambda m: m.group(0) + BANNER, text, count=1)
-
     def neutralize_forms(self, text: str) -> str:
         def form_repl(m: re.Match) -> str:
             tag = m.group(0)
@@ -422,7 +406,6 @@ def main() -> int:
                         help="原始 HTML 存档目录，设为空字符串可关闭")
     parser.add_argument("--delay", type=float, default=0.2,
                         help="每次请求后的等待秒数")
-    parser.add_argument("--no-banner", action="store_true", help="不插入只读提示条")
     parser.add_argument("--keep-forms", action="store_true", help="不禁用表单控件")
     parser.add_argument("--noindex", action="store_true",
                         help="给页面加 robots noindex")
@@ -432,7 +415,6 @@ def main() -> int:
         out_dir=args.out,
         archive_dir=args.archive or None,
         delay=args.delay,
-        banner=not args.no_banner,
         disable_forms=not args.keep_forms,
         noindex=args.noindex,
     )

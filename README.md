@@ -23,7 +23,7 @@ go.myykps.cn（YKPS Portal）的只读静态存档。站点由原 Drupal 7 门�
 make mirror    # 抓取并生成 site/
 make check     # 检查站内断链与残留动态链接
 make serve     # 本地预览 http://127.0.0.1:8080/
-make image     # 构建镜像 myykps-portal:0.1.0
+make image     # 构建镜像 myykps-portal:0.1.1
 ```
 
 单独调用脚本时：
@@ -41,7 +41,6 @@ python3 scripts/serve.py --dir site --port 8080
 | `--out` | `site` | 静态站输出目录 |
 | `--archive` | `archive/raw` | 原始 HTML 存档目录，传空字符串关闭 |
 | `--delay` | `0.2` | 每次请求后的等待秒数 |
-| `--no-banner` | 关闭 | 不插入页面顶部的只读提示条 |
 | `--keep-forms` | 关闭 | 不禁用页面表单控件 |
 | `--noindex` | 关闭 | 给页面加 robots noindex |
 
@@ -56,8 +55,8 @@ Web 根目录指向 `site/`，并需要一条改写规则支持旧链接：
 ### Docker
 
 ```bash
-docker build -f deploy/Dockerfile --build-arg VERSION=0.1.0 -t myykps-portal:0.1.0 .
-docker run -d -p 80:80 myykps-portal:0.1.0
+docker build -f deploy/Dockerfile --build-arg VERSION=0.1.1 -t myykps-portal:0.1.1 .
+docker run -d -p 80:80 myykps-portal:0.1.1
 ```
 
 镜像自带 `deploy/nginx.conf`，监听 80 端口。若由容器直接处理 HTTPS，
@@ -68,7 +67,7 @@ docker run -d -p 80:80 myykps-portal:0.1.0
 docker run -d -p 80:80 -p 443:443 \
   -v $PWD/deploy/nginx.ssl.conf:/etc/nginx/conf.d/default.conf:ro \
   -v /path/to/certs:/etc/nginx/certs:ro \
-  myykps-portal:0.1.0
+  myykps-portal:0.1.1
 ```
 
 ### 已有 Nginx
@@ -91,4 +90,3 @@ location / {
 - `site/` 中有 76 张图片等资源在抓取时返回 404，线上站点同样缺失，不是抓取遗漏。
   清单见 `build/manifest.json` 的 `known_missing`。
 - 登录、评论、邮件转发等动态入口统一指向 `/offline/`，该页说明功能已停用。
-- 页面顶部默认显示一条只读提示条，重新抓取时加 `--no-banner` 可去掉。
