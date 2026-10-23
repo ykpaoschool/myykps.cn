@@ -1,4 +1,4 @@
-VERSION ?= 0.1.1
+VERSION ?= 0.1.2
 IMAGE   ?= myykps-portal
 
 .PHONY: mirror check serve image

@@ -24,7 +24,7 @@ from pathlib import Path
 
 HOST = "go.myykps.cn"
 BASE = f"https://{HOST}"
-UA = "Mozilla/5.0 (compatible; ykps-portal-mirror/0.1.1)"
+UA = "Mozilla/5.0 (compatible; ykps-portal-mirror/0.1.2)"
 
 ASSET_EXTS = {
     ".css", ".js", ".png", ".jpg", ".jpeg", ".gif", ".svg", ".ico", ".webp",
