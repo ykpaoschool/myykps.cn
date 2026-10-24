@@ -14,3 +14,6 @@ build/
 # Python
 __pycache__/
 *.pyc
+
+# 本地打包产物
+site.zip
