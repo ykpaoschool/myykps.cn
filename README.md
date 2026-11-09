@@ -23,7 +23,7 @@ go.myykps.cn（YKPS Portal）的只读静态存档。站点由原 Drupal 7 门�
 make mirror    # 抓取并生成 site/
 make check     # 检查站内断链与残留动态链接
 make serve     # 本地预览 http://127.0.0.1:8080/
-make image     # 构建镜像 myykps-portal:0.1.2
+make image     # 构建镜像 myykps-portal:0.1.3
 ```
 
 单独调用脚本时：
@@ -72,8 +72,8 @@ sudo git -C /var/www/go.myykps.cn pull --ff-only
 ### Docker
 
 ```bash
-docker build -f deploy/Dockerfile --build-arg VERSION=0.1.2 -t myykps-portal:0.1.2 .
-docker run -d -p 80:80 myykps-portal:0.1.2
+docker build -f deploy/Dockerfile --build-arg VERSION=0.1.3 -t myykps-portal:0.1.3 .
+docker run -d -p 80:80 myykps-portal:0.1.3
 ```
 
 镜像自带 `deploy/nginx.conf`，监听 80 端口。若由容器直接处理 HTTPS，
@@ -84,7 +84,7 @@ docker run -d -p 80:80 myykps-portal:0.1.2
 docker run -d -p 80:80 -p 443:443 \
   -v $PWD/deploy/nginx.ssl.conf:/etc/nginx/conf.d/default.conf:ro \
   -v /path/to/certs:/etc/nginx/certs:ro \
-  myykps-portal:0.1.2
+  myykps-portal:0.1.3
 ```
 
 ### 已有 Nginx
