@@ -1,6 +1,6 @@
 FROM nginx:1.27-alpine
 
-ARG VERSION=0.1.2
+ARG VERSION=0.1.3
 LABEL org.opencontainers.image.title="myykps-portal" \
       org.opencontainers.image.description="go.myykps.cn 只读静态存档" \
       org.opencontainers.image.version="${VERSION}"
