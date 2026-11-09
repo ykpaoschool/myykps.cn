@@ -52,6 +52,23 @@ Web 根目录指向 `site/`，并需要一条改写规则支持旧链接：
 /?q=xxx  ->  /xxx/index.html
 ```
 
+### 服务器（git 部署）
+
+仓库为公开仓库，服务器无需配置密钥或 token，直接克隆：
+
+```bash
+sudo git clone https://github.com/ykpaoschool/myykps.cn.git /var/www/go.myykps.cn
+```
+
+Web 根指向仓库内的 `site/`（`/var/www/go.myykps.cn/site`），`.git` 位于 Web 根之外。
+更新时只需拉取，静态文件替换后立即生效：
+
+```bash
+sudo git -C /var/www/go.myykps.cn pull --ff-only
+```
+
+中文文件名显示为转义串时，在仓库内执行 `git config core.quotepath false`。
+
 ### Docker
 
 ```bash
